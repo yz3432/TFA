@@ -1,0 +1,66 @@
+Movalyst
+From Tools Project
+Section 1
+
+What is it?
+Movalyst is a convenient movie data analyzing tool, mainly based on Box Office Mojo. With Movalyst, it is easy to create tables and visualized graphs. You can find movie data among top 100 movies every year from 1980 until now. What’s more, if you want to do some text mining about movie reviews, Movalyst also provides you with some tools based on data scraped from Rotten Tomatoes..
+
+What we do?
+In order for users to better carry out further analysis, we create functions to scrape website data first. They can realize finding group movie data from one specific year.
+With data found in the preceding part, users can do further analyses including feature distribution, finding good actors,directors and attach showtime to movies etc.
+We scrape reviews of first 30 movies in 2018 to do text mining.
+We also write a function to recommend movies by conducting sentiment analysis to movie reviews scraped from Rotten Tomatoes.
+We conduct topic modelling to all reviews and plot the pyLDAvis graph.
+We use decision tree model to fit movies feature variables and identify the model by drawing ROC curve.
+
+Run instructions:
+Here, you can find more details about Movalyst functions in a logical order and how to call the function in a right way:
+movie_from_year(year): With this function, you can find a list of url of top 100 movies in the specified year and the names of them in a list. You need to input a year no earlier than 1980 and no later than this year as a parameter.
+find_from_to(yearx,yeary): If you want to see top 100 movies from one year to the other, user this function. You just need to input a start year and an end year, you can get a dictionary with movie names as keys and movie urls as values.
+gross_movie(name,begin_year,end_year): You could get a detailed table for a specific movie’s daily gross. The table contains day, rank, gross box office at that day, daily percentage change and weekly percentage change, etc.
+data_movie(name,begin_year=1980,end_year=2018): With this function, you could get a specific movie's basic information including name, genre, runtime, budget, actors, directors and gross box office, etc.
+data_movies_table(begin_year=1980,end_year=2018,input_name=None): With this function, you could get all movie's basic information including name, genre, runtime, budget, actors, directors and gross box office, etc.
+movie_data_group(year): With this function, you can get some basic feature data of top 100 movies in a table with the specified year as you input. The features include Movie Name,Domestic Total Gross,Distributor,Release Time,Genre,Runtime,MPAA Rating,Production Budget,Worldwide Gross. This function is faster than data_movie_table but it has fewer features.
+data_movies_format_01(begin_year=1980,end_year=2018,input_name=None): With this function, data of both domestic and foreign gross box office is cleaned and changed into int type data.
+news_of_movie(name, year): With a name and the release year of that movie, you can get some news, however, this one is not so accurate, sometimes you get some news not relevant.
+distributor_movie(name,year): If you want to know something about the data a specific distributor release within a specific year. You call this function with the distributor’s name and the year as inputs. You will get the movies’ grosses and opening time.
+single_movie_gross_plot(name): With this function, you could get a line chart showing a movie's day-to-date change of its box office.
+single_movie_dailychange_plot(name): With this function, you could get a line chart plotting a movie's daily-gross-percent-change.
+domestic_foreign_dis(year): While some movies are focused in domestic markets, others are more targeted at the global market. To get this feature of the movie, simply play with this function which would present you with the ratio of domestic and foreign gross box office to the total gross box office, the movies with the 10 and 100 highest ratios and draw a pie chart accordingly.
+market_data(year): Input a specific year, you can get a pie graph showing you the top 5 market capturing distributors with this function.
+pie_graph(data,feature): With known data input as pandas dataframe, you can get a pie graph with top 5 proportion classes in a specific feature from the data input.
+groupbybox(begin_year,end_year): With this function, movies are grouped by box office and divided into three categories according to their percentiles in the domestic box office as High, Notbad and Low.
+showtimes(begin_year,end_year): Generally speaking, movie showtimes in North America is divided into five periods, which are spring, summer, fall, winter and holiday season. With this function, you would get a new column in the dataframe specifying the showtime that a movie falls in. This is an prerequisite for looking further into genres.
+genre(begin_year,end_year): A movie may fall into several genres at the same time. With this function, we split the genre and make it more clear for looking further into movie showtimes.
+yearsum(begin_year,end_year): With this function, you are presented with a line chart of market concentrations levels from begin_year to end_year. The indicator of market concentrations are indicated by  the ratio of the top 10, top 20 and top 50 movies’ box office to the gross domestic box office respectively. Since the more concentrated a market is, the heavier investment would be required to lock in a higher probability of a movie’s success, market concentrations have become an important indicator.
+movie_trend(data,start_year,feature, list_of_feature):This function needs to be carried out after you get top 100 movie data for a consecutive periods of years. Then you input this data as the first parameter, input the start year of your data and a list of genres you want to see their trends, then this function will return you a line graph, showing you the trends of different classes in the feature you specify.
+valuable_actors(year1,year2,top=5): With this function, a form is presented showing the actors involved in movies of 5 highest box office within the time period from year1 to year2.
+valuable_directors(year1,year2,top=5): This is similar to the last function. With this function, you would find the most valuable movie directors from year1 to year2.
+find_hit(year,rank): This is a function helping you to pin movie having small budgets but earning big grosses. You need to specify a year and a rank, for example, you want to see top 10 movies which earns a lot with little spending in 2018, you call find_hit(2018, 10).
+get_review(name, page_length = 2, num = 20): Get a selected number of reviews based on movies name.
+get_name_review(year, num = 30, page_length = 2, length = 20): Return a list with pairs of movie name and review.
+get_pos_neg_words(): Get positive and negative words from sentiment analysis lexicon.
+do_pos_neg_sentiment_analysis(reviews): Get the proportion of positive and negative words in each review and return them in a table. 
+get_nrc_data(): Get an emotion dictionary based on NRC data.
+comparative_emotion_analyzer(reviews,object_name="name"): Identified the emotion corresponded by each word in the review and return a table with the weight of emotion for each movie. 
+vader_comparison(reviews): Do vader analysis to reviews and return a table sorted by compound sentiment. 
+get_recommendation(num): Assigned scores to movies in each method and give recommendation based on their total scores. Customers can input the number of recommendations they want.
+remove_words(text_string,DELETE_WORDS=DELETE_WORDS) & remove_short_words(text_string,min_length = MIN_LENGTH):  Prepare text to be used in wordcloud by removing redundant and short words.
+get_topics(num_topics = 5, passes = 10, num_words = 8): Get topics of all reviews with LDA model and draw pyLDAvis plot. Customers can choose the number of topics to generate.
+get_decision_tree_table(year = 2018): Quantify movies’ feature variables and fit them with classification decision tree.
+
+Installation instructions:
+In order to call functions of Movalyst, you will need to install the following modules:
+!pip install requests --upgrade
+!pip install bs4 --upgrade
+!pip install datetime --upgrade
+!pip install pandas --upgrade
+!pip install matplotlib --upgrade
+!pip install nltk
+!pip install wordcloud
+!pip install vaderSentiment
+!pip install gensim
+!pip install pprint
+!pip install google-compute-engine
+!pip install pyLDAvis
+!pip install sklearn
