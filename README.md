@@ -37,7 +37,7 @@ Here, you can find more details about Movalyst functions in a logical order and 
 - `valuable_directors(year1,year2,top=5)`: This is similar to the last function. With this function, you would find the most valuable movie directors from year1 to year2.
 - `find_hit(year,rank)`: This is a function helping you to pin movie having small budgets but earning big grosses. You need to specify a year and a rank, for example, you want to see top 10 movies which earns a lot with little spending in 2018, you call find_hit(2018, 10).
 - `get_review(name, page_length = 2, num = 20)`: Get a selected number of reviews based on movies name.
-- `get_name_review(year, num = 30, page_length = 2, length = 20)`: Return a list with pairs of movie name and review.
+- `get_name_review(year, num = 30, page_length = 2, length = 20)`: Return a list with pairs of movie name and review. Here we only choose 20 reviews for each of top 30 movies.
 - `get_pos_neg_words()`: Get positive and negative words from sentiment analysis lexicon.
 - `do_pos_neg_sentiment_analysis(reviews)`: Get the proportion of positive and negative words in each review and return them in a table. 
 - `get_nrc_data()`: Get an emotion dictionary based on NRC data.
@@ -46,7 +46,7 @@ Here, you can find more details about Movalyst functions in a logical order and 
 - `get_recommendation(num)`: Assigned scores to movies in each method and give recommendation based on their total scores. Customers can input the number of recommendations they want.
 - `remove_words(text_string,DELETE_WORDS=DELETE_WORDS) & remove_short_words(text_string,min_length = MIN_LENGTH)`:  Prepare text to be used in wordcloud by removing redundant and short words.
 - `get_topics(num_topics = 5, passes = 10, num_words = 8)`: Get topics of all reviews with LDA model and draw pyLDAvis plot. Customers can choose the number of topics to generate.
-- `get_decision_tree_table(year = 2018)`: Quantify movies’ feature variables and fit them with classification decision tree.
+- `get_decision_tree_table(year = 2018)`: Get movies data in recent three years, quantify movies’ feature variables and fit them with classification decision tree. The worldwide gross is set to be independent variable and classified based on third quatile value.
 
 ## Installation instructions:
 In order to call functions of Movalyst, our users need to install the following modules from pypi:
