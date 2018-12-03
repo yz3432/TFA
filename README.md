@@ -4,12 +4,12 @@
 _Movalyst_ is a powerful movie data analyzing tool based on data from Box Office Mojo and Rotten Tomatoes. With Movalyst, it is easy to scrape movies data, display tables and visualized graphs. Users can find data for top 100 movies every year from 1980 until now and check data-based analysis result. 
 
 ## What we do?
-Before analyzing data, we first create functions to scrape data from website. Movie data in one specific year can be found with these functions.
-With data found in the preceding part, users can do further analyses including feature distribution, finding good actors,directors and attach showtime to movies etc.
-We scrape reviews of top 30 movies in 2018 from Rotten Tomatoes to do text mining.
-We conduct three types of sentiment analysis to reviews and recommend movies based on results.
-We conduct topic modelling to all reviews and plot the pyLDAvis graph.
-We use decision tree model to fit movies feature variables and identify the model by drawing ROC curve.
+- Before analyzing data, we first create functions to scrape data from website. Movie data in one specific year can be found with these functions.
+- With data found in the preceding part, users can do further analyses including feature distribution, finding good actors,directors and attach showtime to movies etc.
+- We scrape reviews of top 30 movies in 2018 from Rotten Tomatoes to do text mining.
+- We conduct three types of sentiment analysis to reviews and recommend movies based on results.
+- We conduct topic modelling to all reviews and plot the pyLDAvis graph.
+- We use decision tree model to fit movies feature variables and identify the model by drawing ROC curve.
 
 ## Run instructions:
 Here, you can find more details about Movalyst functions in a logical order and how to call the function in a right way:
